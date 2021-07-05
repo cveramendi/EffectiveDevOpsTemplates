@@ -37,7 +37,7 @@ GithubAccount = "cveramendi"
 GithubAnsibleURL = "https://github.com/{}/ansible".format(GithubAccount)
 
 AnsiblePullCmd = \
-    "/usr/local/bin/ansible-pull -U {} {}.yml -i localhost -C jenkins".format(
+    "/usr/local/bin/ansible-pull -U {} {}.yml -i localhost -C code-deploy".format(
         GithubAnsibleURL,
         ApplicationName
     )

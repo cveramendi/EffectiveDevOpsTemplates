@@ -136,8 +136,8 @@
                                 "#!/bin/bash",
                                 "yum install --enablerepo=epel -y git",
                                 "pip install ansible",
-                                "/usr/local/bin/ansible-pull -U https://github.com/cveramendi/ansible nodeserver.yml -i localhost -C jenkins",
-                                "echo '*/10 * * * * root /usr/local/bin/ansible-pull -U https://github.com/cveramendi/ansible nodeserver.yml -i localhost -C jenkins' > /etc/cron.d/ansible-pull"
+                                "/usr/local/bin/ansible-pull -U https://github.com/cveramendi/ansible nodeserver.yml -i localhost -C code-deploy",
+                                "echo '*/10 * * * * root /usr/local/bin/ansible-pull -U https://github.com/cveramendi/ansible nodeserver.yml -i localhost -C code-deploy' > /etc/cron.d/ansible-pull"
                             ]
                         ]
                     }
