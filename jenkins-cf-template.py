@@ -111,6 +111,7 @@ t.add_resource(IAMPolicy(
                 Resource=["*"])
         ]
     ),
+    Roles=[Ref("Role")]
 ))
 
 
