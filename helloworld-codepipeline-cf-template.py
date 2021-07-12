@@ -57,6 +57,8 @@ t.add_resource(Role(
                     {"Effect": "Allow", "Action": "cloudformation:*", "Resource": "*"},
                     {"Effect": "Allow", "Action": "codebuild:*", "Resource": "*"},
                     {"Effect": "Allow", "Action": "codepipeline:*", "Resource": "*"},
+                    {"Effect": "Allow", "Action": "codestar-connections:*",
+                        "Resource": "*"},
                     {"Effect": "Allow", "Action": "ecr:*", "Resource": "*"},
                     {"Effect": "Allow", "Action": "ecs:*", "Resource": "*"},
                     {"Effect": "Allow", "Action": "iam:*", "Resource": "*"},
@@ -112,7 +114,7 @@ t.add_resource(Pipeline(
                     ActionTypeId=ActionTypeId(
                         Category="Source",
                         Owner="ThirdParty",
-                        Version="2",
+                        Version="1",
                         Provider="GitHub"
                     ),
                     Configuration={
