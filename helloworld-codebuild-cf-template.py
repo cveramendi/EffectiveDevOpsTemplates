@@ -54,7 +54,6 @@ environment = Environment(
     Type='LINUX_CONTAINER',
     EnvironmentVariables=[
         {'Name': 'REPOSITORY_NAME', 'Value': 'helloworld'},
-        {'Name': 'REGION_AWS', 'Value': Ref("AWS::Region")},
         {'Name': 'REPOSITORY_URI',
             'Value': Join("", [
                 Ref("AWS::AccountId"),
@@ -74,7 +73,7 @@ phases:
       - aws codepipeline get-pipeline-execution --pipeline-name "${CODEBUILD_INITIATOR##*/}" --pipeline-execution-id $(cat /tmp/execution_id.txt) --query 'pipelineExecution.artifactRevisions[0].revisionId' --output=text > /tmp/tag.txt
       - printf "%s:%s" "$REPOSITORY_URI" "$(cat /tmp/tag.txt)" > /tmp/build_tag.txt
       - printf '{"tag":"%s"}' "$(cat /tmp/tag.txt)" > /tmp/build.json
-      - aws ecr get-login-password --region "$REGION_AWS" | docker login --username AWS --password-stdin "$REPOSITORY_URI"
+      - $(aws ecr get-login --no-include-email)
   build:
     commands:
       - docker build -t "$(cat /tmp/build_tag.txt)" .
